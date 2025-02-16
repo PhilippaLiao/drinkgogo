@@ -1,0 +1,6 @@
+@drinkgogo_HostAddress = http://localhost:5121
+
+GET {{drinkgogo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
