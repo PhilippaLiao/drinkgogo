@@ -34,6 +34,11 @@ namespace drinkgogo.Controllers
         [HttpPost("webhook")]  // 設定此路徑為處理 webhook 的 POST 請求
         public async Task<IActionResult> Post([FromBody] LineWebhookRequest webhookRequest)
         {
+            if (webhookRequest.Events == null || webhookRequest.Events.Count == 0)
+            {
+                return Ok(); // 確保 LINE 的測試請求不會導致錯誤
+            }
+
             // 取得用戶傳來的訊息
             var userMessage = webhookRequest.Events[0].Message.Text;
 
